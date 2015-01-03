@@ -1,0 +1,7 @@
+name: MGLib
+version: 1.0
+main: ru.hilgert.lib.mg.MainClass
+commands:
+    mgpl:
+        description: MGLib plugins
+        permission: mglib.plugins
