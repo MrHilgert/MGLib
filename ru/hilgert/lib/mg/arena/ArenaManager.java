@@ -21,9 +21,9 @@ public class ArenaManager {
 
 	public List<Arena> arenas = new ArrayList<>(); // Лист с аренами, которые
 													// будут храниться временно
-	
+
 	private HashMap<Player, Arena> players = new HashMap<Player, Arena>();
-	
+
 	private Plugin plugin;
 
 	public ArenaManager(Plugin plugin) {
@@ -69,7 +69,7 @@ public class ArenaManager {
 																		// игрокам
 																		// на
 		players.put(event.getPlayer(), event.getArena());
-		
+
 		// арене
 
 		int playersLeft = event.getArena().getStart()
@@ -135,8 +135,7 @@ public class ArenaManager {
 
 		if (event.getArena().getPlayers() != null) { // А на арене есть игроки?
 
-			event.getArena().sendMessage(
-					event.getArena().getPrefix() + "The end of the game!");
+			event.getArena().sendMessage("Время истекло!");
 			event.getArena().setInGame(false); // Арена не в игре!
 
 			Iterator<String> players = event.getArena().getPlayers().iterator();
@@ -192,17 +191,16 @@ public class ArenaManager {
 				// играющих
 
 				event.getArena().sendMessage(
-						event.getArena().getPrefix()
-								+ event.getPlayer().getName()
-								+ " Вышел из арены! &6"
+						event.getPlayer().getName() + " Вышел из арены! &6"
 								+ event.getArena().getPlayers().size()
 								+ "&4/&6" + event.getArena().getMax()); // Он
 																		// покинул
 																		// нас
 																		// :c
-				
-				if(players.containsKey(event.getPlayer())) players.remove(event.getPlayer());
-				
+
+				if (players.containsKey(event.getPlayer()))
+					players.remove(event.getPlayer());
+
 				if (event.getArena().getPlayers().size() <= 1) { // А на арене
 																	// остался
 					// только один, или нет
@@ -284,14 +282,14 @@ public class ArenaManager {
 		return false;
 	}
 
-	public boolean isPlaying(Player player){
+	public boolean isPlaying(Player player) {
 		return players.containsKey(player);
 	}
-	
-	public Arena getPlayerArena(Player player){
+
+	public Arena getPlayerArena(Player player) {
 		return players.get(player);
 	}
-	
+
 	public boolean hasWaiter(Arena arena, Player p) { // А может, он только
 														// ожидающий на этой
 														// арене?
@@ -333,8 +331,6 @@ public class ArenaManager {
 			arenas.remove(event.getArena());
 		}
 	}
-	
-	
 
 	public Plugin getPlugin() {
 		return plugin;

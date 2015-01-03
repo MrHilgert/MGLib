@@ -8,28 +8,28 @@ import org.bukkit.event.HandlerList;
 import ru.hilgert.lib.mg.arena.Arena;
 import ru.hilgert.lib.mg.teams.GameTeam;
 
-public class MGTeamPlayerAddEvent extends Event implements Cancellable{
+public class MGTeamPlayerAddEvent extends Event implements Cancellable {
 
-	private HandlerList handlers = new HandlerList();
+	private static HandlerList handlers = new HandlerList();
 
 	private Arena arena;
 	private Player player;
 	private GameTeam team;
-	
+
 	private boolean isCancelled = false;
-	
+
 	public MGTeamPlayerAddEvent(Arena arena, GameTeam team, Player player) {
 		this.arena = arena;
 		this.player = player;
 		this.team = team;
 	}
-	
+
 	@Override
 	public HandlerList getHandlers() {
 		return handlers;
 	}
-	
-	public GameTeam getTeam(){
+
+	public GameTeam getTeam() {
 		return this.team;
 	}
 
@@ -44,6 +44,10 @@ public class MGTeamPlayerAddEvent extends Event implements Cancellable{
 	@Override
 	public boolean isCancelled() {
 		return isCancelled;
+	}
+
+	public static HandlerList getHandlerList() {
+		return handlers;
 	}
 
 	@Override

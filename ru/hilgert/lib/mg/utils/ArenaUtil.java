@@ -6,8 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import ru.hilgert.lib.mg.MGLib;
-import ru.hilgert.lib.mg.MiniGame;
 import ru.hilgert.lib.mg.arena.Arena;
 import ru.hilgert.lib.mg.arena.ArenaManager;
 
@@ -15,16 +13,8 @@ public class ArenaUtil {
 
 	private static ArenaManager am;
 
-	private static String miniGame = "";
-	
-	private static MGLib mglib = new MGLib();
-	
-	public ArenaUtil(MiniGame mg, ArenaManager am) {
+	public ArenaUtil(ArenaManager am) {
 		setArenaManager(am);
-		if(!mglib.getMiniGamesImplements().containsKey(mg)){
-			throw new NullPointerException("MiniGame not found");
-		}
-		miniGame = mglib.getMiniGamesImplements().get(mg);
 	}
 
 	public static void saveArena(Arena arena, File f) { // Метод сохранения

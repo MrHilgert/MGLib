@@ -9,11 +9,18 @@ import ru.hilgert.lib.mg.events.PlayerEventCaller;
 
 public class MainClass extends JavaPlugin {
 
+	private static MainClass inst;
+	
 	@Override
 	public void onEnable() {
+		inst = this;
 		getLogger().info("MGLib enabled");
 		Bukkit.getPluginManager().registerEvents(new PlayerEventCaller(this),
 				this);
+	}
+	
+	public static MainClass getInstance(){
+		return inst;
 	}
 
 	@Override

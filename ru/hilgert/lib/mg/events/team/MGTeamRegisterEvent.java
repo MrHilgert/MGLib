@@ -10,12 +10,12 @@ import org.bukkit.event.HandlerList;
 import ru.hilgert.lib.mg.arena.Arena;
 import ru.hilgert.lib.mg.teams.GameTeam;
 
-public class MGTeamRegisterEvent extends Event implements Cancellable{
+public class MGTeamRegisterEvent extends Event implements Cancellable {
 
-	private HandlerList handlers = new HandlerList();
+	private static HandlerList handlers = new HandlerList();
 
 	private GameTeam team;
-	
+
 	private boolean isCancelled = false;
 
 	public MGTeamRegisterEvent(GameTeam team) {
@@ -26,34 +26,38 @@ public class MGTeamRegisterEvent extends Event implements Cancellable{
 	public HandlerList getHandlers() {
 		return handlers;
 	}
-	
-	public int getId(){
+
+	public int getId() {
 		return team.getId();
 	}
-	
-	public Color getArmColor(){
+
+	public Color getArmColor() {
 		return team.getArmColor();
 	}
-	
-	public Arena getArena(){
+
+	public Arena getArena() {
 		return team.getArena();
 	}
-	
-	public ChatColor getColor(){
+
+	public ChatColor getColor() {
 		return team.getColor();
 	}
-	
-	public Location getSpawn(){
+
+	public Location getSpawn() {
 		return team.getSpawn();
 	}
-	
-	public GameTeam getTeam(){
+
+	public GameTeam getTeam() {
 		return this.team;
 	}
 
 	@Override
 	public boolean isCancelled() {
 		return isCancelled;
+	}
+
+	public static HandlerList getHandlerList() {
+		return handlers;
 	}
 
 	@Override

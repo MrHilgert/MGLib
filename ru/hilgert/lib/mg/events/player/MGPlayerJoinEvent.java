@@ -7,20 +7,20 @@ import org.bukkit.event.HandlerList;
 
 import ru.hilgert.lib.mg.arena.Arena;
 
-public class MGPlayerJoinEvent extends Event implements Cancellable{
+public class MGPlayerJoinEvent extends Event implements Cancellable {
 
-	private HandlerList handlers = new HandlerList();
+	private static HandlerList handlers = new HandlerList();
 
 	private Arena arena;
 	private Player player;
-	
+
 	private boolean isCancelled = false;
-	
+
 	public MGPlayerJoinEvent(Arena arena, Player player) {
 		this.arena = arena;
 		this.player = player;
 	}
-	
+
 	@Override
 	public HandlerList getHandlers() {
 		return handlers;
@@ -37,6 +37,10 @@ public class MGPlayerJoinEvent extends Event implements Cancellable{
 	@Override
 	public boolean isCancelled() {
 		return isCancelled;
+	}
+
+	public static HandlerList getHandlerList() {
+		return handlers;
 	}
 
 	@Override

@@ -9,32 +9,36 @@ import org.bukkit.inventory.ItemStack;
 
 import ru.hilgert.lib.mg.arena.Arena;
 
-public class MGPlayerInteractEvent extends Event implements Cancellable{
+public class MGPlayerInteractEvent extends Event implements Cancellable {
 
-	private HandlerList handlers = new HandlerList();
+	private static HandlerList handlers = new HandlerList();
 
 	private Arena arena;
 	private Player player;
 	private Action action;
-	
+
 	private boolean cancelled;
-	
+
 	public MGPlayerInteractEvent(Arena arena, Player player, Action action) {
 		this.arena = arena;
 		this.player = player;
 		this.action = action;
 	}
 
-	public Action getAction(){
+	public Action getAction() {
 		return action;
 	}
-	
-	public ItemStack getItem(){
+
+	public ItemStack getItem() {
 		return player.getItemInHand();
 	}
-	
+
 	@Override
 	public HandlerList getHandlers() {
+		return handlers;
+	}
+
+	public static HandlerList getHandlerList() {
 		return handlers;
 	}
 

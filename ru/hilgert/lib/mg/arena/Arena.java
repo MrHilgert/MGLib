@@ -107,7 +107,7 @@ public class Arena extends ArenaManager {
 
 	public void sendMessage(String msg) {
 		for (String str : players) {
-			Bukkit.getPlayer(str).sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
+			Bukkit.getPlayer(str).sendMessage(ChatColor.translateAlternateColorCodes('&', getPrefix() + msg));
 		}
 	}
 

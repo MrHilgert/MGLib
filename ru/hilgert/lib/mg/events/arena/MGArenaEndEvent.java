@@ -6,18 +6,18 @@ import org.bukkit.event.HandlerList;
 
 import ru.hilgert.lib.mg.arena.Arena;
 
-public class MGArenaEndEvent extends Event implements Cancellable{
+public class MGArenaEndEvent extends Event implements Cancellable {
 
-	private HandlerList handlers = new HandlerList();
+	private static HandlerList handlers = new HandlerList();
 
 	private Arena arena;
-	
+
 	private boolean isCancelled = false;
-	
+
 	public MGArenaEndEvent(Arena arena) {
 		this.arena = arena;
 	}
-	
+
 	@Override
 	public HandlerList getHandlers() {
 		return handlers;
@@ -30,6 +30,10 @@ public class MGArenaEndEvent extends Event implements Cancellable{
 	@Override
 	public boolean isCancelled() {
 		return isCancelled;
+	}
+
+	public static HandlerList getHandlerList() {
+		return handlers;
 	}
 
 	@Override
